@@ -6,6 +6,7 @@ cp /analysis_crash/WhyDidTheAnalysisCrash.txt .
 echo "${@:1}"
 #run thing
 which python
+lscpu
 ls -lh /scripts/
 python -c 'print "hello"'
 python2.7-dbg /scripts/ocsi2.py "${@:1}"
