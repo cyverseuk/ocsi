@@ -25,7 +25,7 @@ RUN git clone https://github.com/cyversewarwick/analysis_crash.git
 
 #debug
 RUN apt-get update && apt-get -y install python2.7-dbg python-pip
-RUN pip install scipy pandas
+RUN pip install pandas scipy
 RUN chmod 777 /scripts/*
 
 WORKDIR analyses
