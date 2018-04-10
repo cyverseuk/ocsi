@@ -8,6 +8,7 @@ echo "${@:1}"
 which python
 ls -lh /scripts/
 python -c 'print "hello"'
+python2.7-dbg /scripts/ocsi2.py "${@:1}"
 python /scripts/ocsi2.py "${@:1}"
 
 #wrap up output and kick out tempfile

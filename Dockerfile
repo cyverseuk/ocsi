@@ -22,6 +22,9 @@ MAINTAINER Krzysztof Polanski <k.t.polanski@warwick.ac.uk>
 #set up analysis crash text file
 RUN apt-get -y install git
 RUN git clone https://github.com/cyversewarwick/analysis_crash.git
+
+#debug
+RUN apt-get update && apt-get -y install python2.x-dbg
 RUN chmod 777 /scripts/*
 
 WORKDIR analyses
