@@ -22,7 +22,7 @@ MAINTAINER Krzysztof Polanski <k.t.polanski@warwick.ac.uk>
 #set up analysis crash text file
 RUN apt-get -y install git
 RUN git clone https://github.com/cyversewarwick/analysis_crash.git
-RUN chmod +x /scripts/*
+RUN chmod 777 /scripts/*
 
 WORKDIR analyses
 
