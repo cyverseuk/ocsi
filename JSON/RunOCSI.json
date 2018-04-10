@@ -1,0 +1,15 @@
+{
+  "name" : "ocsi",
+  "appId" : "OCSI-0.0.0",
+  "archive" : false,
+  "inputs": {
+    "csi_input" : [
+      "https://de.cyverse.org/dl/d/17C2834A-59AF-4A39-B818-2B7C51CE0E59/matlab-csi-species1.csv",
+      "https://de.cyverse.org/dl/d/CEF8C6F3-7BF4-43C5-B1DC-9FB8E0E3A27C/matlab-csi-species2.csv"
+    ],
+    "orthologue_file" : "https://de.cyverse.org/dl/d/0E173F7C-F642-489B-AB87-BF94F950FF3A/orthologs.csv"
+  },
+  "parameters" : {
+    "temperature": 2.2
+  }
+}

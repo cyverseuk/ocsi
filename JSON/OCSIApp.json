@@ -1,0 +1,143 @@
+{
+  "name": "OCSI",
+  "label": "Orthologous Causal Structure Identification (OCSI)",
+  "shortDescription": "An enhancement of CSI, network inference for time course datasets across different species. Requires input from the CSI app, ran for each of the datasets separately.",
+  "longDescription": "An enhancement of CSI, network inference for time course datasets across different species. Requires input from the CSI app, ran for each of the datasets separately.",
+  "helpURI": "https://github.com/cyversewarwick/ocsi",
+  "datePublished": "",
+  "author":"Alice Minotto",
+  "version": "0.0.0",
+  "deploymentSystem": "cyverseUK-Storage2",
+  "deploymentPath": "/mnt/data/apps/ocsi",
+  "executionSystem": "cyverseUK-Batch2",
+  "executionType": "CLI",
+  "parallelism": "SERIAL",
+  "templatePath": "wrapper.sh",
+  "testPath": "test.sh",
+  "ontology": [ "http://edamontology.org/operation_3439"],
+  "tags": [ "CyverseUK" ],
+  "inputs": [
+    {"id": "csi_input",
+    "value": {
+      "required": true,
+      "default": ""
+    },
+    "details": { "label": "CSI input",
+      "description": "csi_out.csv as produced by all the individual species' CSI runs.",
+      "showArgument": false
+    },
+    "semantics": {
+      "maxCardinality": -1
+    }},
+    {"id": "orthologue_file",
+    "value": {
+      "required": true,
+      "default": ""
+    },
+    "details": { "label": "Orthologue file",
+      "description": "Orthologue file, with an orthologue group occupying a single comma-delimited line in the file. Each gene ID across all the species in the analysis needs to appear in this file.",
+      "showArgument": false
+    },
+    "semantics": {
+      "maxCardinality": 1
+    }}
+    ],
+
+
+  "parameters": [
+    {"id": "ocsi_framework",
+    "value": {
+      "type": "enumeration",
+      "visible": true,
+      "enumValues": [
+        {"1": "1 - Hypernetwork"},
+        {"2": "2 - Pairwise Comparison"}
+      ],
+      "default": "1"
+    },
+    "details": {
+      "label" : "OCSI framework",
+      "description":"Choose between an hypernetwork-constrained or pairwise-comparison-across-all-pairs-of-species mode of operations. The former is recommended for 4+ species, the latter for 3 or 2. ",
+      "showArgument": true,
+      "argument": "-fw "
+      },
+    "semantics": {
+      "maxCardinality": 1
+      }},
+    {"id": "temperature",
+    "value": {
+      "type": "string",
+      "visible": true,
+      "required": true,
+      "validator": "^\\d+(\\.\\d+)?$"
+      },
+    "details": {
+      "label": "Temperature",
+      "description": "The influence on network similarity on updating the topology ( the higher the temperature, the higher the network similarity's impact). Default should be about 10 for framework 1and around 2-3 for framework 2.",
+      "showArgument": true,
+      "argument": "-beta " 
+      },
+    "semantics": {
+      "maxCardinality": 1
+      }},
+    {"id": "parental_set_depth",
+      "value": {
+        "type": "number",
+        "visible": true,
+        "validator": "^\\d+$",
+        "default": 2
+      },
+      "details": {
+        "label": "Parental Set Depth",
+        "description": "As provided to CSI for the runs that are used on input here.",
+        "showArgument": true,
+        "argument": "-d "
+      },
+      "semantics": {
+        "maxCardinality": 1
+      }
+    },
+    {"id": "gibbs_chain_length",
+      "value": {
+        "type": "number",
+        "visible": true,
+        "default": 1000,
+        "validator": "^\\d+$"
+      },
+      "details": {
+        "label": "Gibbs Chain Length",
+        "description": "How many Gibbs sampling iterations to perform.",
+        "showArgument": true,
+        "argument": "-g "
+      }
+    },
+    {"id": "burn_in",
+      "value": {
+        "type": "number",
+        "visible": true,
+        "default": 100,
+        "validator": "^\\d+$"
+      },
+      "details": {
+        "label": "Burn-in",
+        "description": "How many initial Gibbs updates to discard as burn-in.",
+        "showArgument": true,
+        "argument": "-br " 
+      }
+    },
+    {"id": "wlh",
+      "value": {
+        "type": "number",
+        "visible": true,
+        "default": 1,
+        "validator": "^[0-9]+$" 
+      },
+      "details": {
+        "label": "Weifeiler-Lehman Depth",
+        "description": "Network kernel depth. An increase amplifies the difference between networks at the cost of computational run time. Values above 2 not recommended.",
+        "showArgument": true,
+        "argument": "-wlh "
+      }
+    }
+]
+}

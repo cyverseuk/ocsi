@@ -1,4 +1,8 @@
 ## OCSI 
+
+<bold> Adapted from `cyversewarwick/ocsi`. Added additional permissions to run on Condor </bold>
+
+
 ### A broad overview of the OCSI idea
 
 OCSI is a framework that infers gene regulatory network (GRN) topology of several species responding to perturbations/treatments, with the species evolving from the some common ancestor. Due to sharing this ancestor, certain genes from these species are orthologous, which results in a certain similarity between these species' GRNs. OCSI makes use of this fact, in conjunction with predictions from CSI to make improved guesses of these GRNs' topology.

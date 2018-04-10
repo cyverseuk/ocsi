@@ -1,6 +1,10 @@
 # run as:
 #   docker build -t ocsi .
 
+# Dockerfile adapted from cyversewarwick/ocsi
+# added permissions to run on Condor
+
+
 # base everything on a recent Ubuntu
 FROM debian:9
 
@@ -18,6 +22,7 @@ MAINTAINER Krzysztof Polanski <k.t.polanski@warwick.ac.uk>
 #set up analysis crash text file
 RUN apt-get -y install git
 RUN git clone https://github.com/cyversewarwick/analysis_crash.git
+RUN chmod +x /scripts/*
 
 WORKDIR analyses
 
