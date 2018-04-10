@@ -24,7 +24,7 @@ RUN apt-get -y install git
 RUN git clone https://github.com/cyversewarwick/analysis_crash.git
 
 #debug
-RUN apt-get update && apt-get -y install python2.x-dbg
+RUN apt-get update && apt-get -y install python2.7-dbg
 RUN chmod 777 /scripts/*
 
 WORKDIR analyses
