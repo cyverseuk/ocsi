@@ -1,9 +1,12 @@
 #!/bin/bash
-set -e
+set -e -x
 
 cp /analysis_crash/WhyDidTheAnalysisCrash.txt .
 
+echo "${@:1}"
 #run thing
+which python
+ls -lh /scripts/
 python /scripts/ocsi2.py "${@:1}"
 
 #wrap up output and kick out tempfile
