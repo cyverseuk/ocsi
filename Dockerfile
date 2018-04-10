@@ -11,7 +11,7 @@ FROM debian:9
 # get system packages up to date then install a basic scientific python
 RUN apt-get update && apt-get -y upgrade && \
     apt-get -y install python \
-         python-numpy python-scipy python-pandas ttf-bitstream-vera
+         ttf-bitstream-vera
 
 # add code
 RUN mkdir /scripts && mkdir analyses
@@ -24,7 +24,8 @@ RUN apt-get -y install git
 RUN git clone https://github.com/cyversewarwick/analysis_crash.git
 
 #debug
-RUN apt-get update && apt-get -y install python2.7-dbg
+RUN apt-get update && apt-get -y install python2.7-dbg python-pip
+RUN pip install numpy scipy pandas
 RUN chmod 777 /scripts/*
 
 WORKDIR analyses
